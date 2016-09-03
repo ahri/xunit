@@ -110,8 +110,8 @@ namespace Xunit
 
         /// <summary>
         /// Gets a flag indicating whether shadow copies should be used. If the flag is not set,
-        /// returns the default value (<c>true</c>).
+        /// returns the default value (<c>true</c> on Windows, <c>false</c> on Unix/MacOSX).
         /// </summary>
-        public bool ShadowCopyOrDefault { get { return ShadowCopy ?? true; } }
+        public bool ShadowCopyOrDefault { get { return ShadowCopy ?? Environment.OSVersion.Platform != PlatformID.Unix && Environment.OSVersion.Platform != PlatformID.MacOSX; } }
     }
 }
